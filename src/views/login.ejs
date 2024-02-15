@@ -1,0 +1,63 @@
+<%- include('includes/head') %>
+<%- include('includes/nav') %>
+    
+<div class="contaner"> 
+    <div class="row">
+        <div class="col-lg-2"> </div>
+
+        <div class="col-lg-8 my-3">
+            <h1 class=" text-center">Login</h1>
+            <p class="text-center lead">Log in or create your account below</p>
+
+            <div class="row">
+
+                <div class="col-lg">
+                    <h4>Create your account</h4>
+                    <p>If you don't have an account, create one below</p>
+                    <form action="/login/register" method="POST">
+                        <input type="hidden" name="_csrf" value=<%= csrfToken %>>
+                        <div class="mb-3">
+                          <label for="exampleInputEmail1" class="form-label">Email address</label>
+                          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        </div>
+                        <div class="mb-3">
+                          <label for="exampleInputPassword1" class="form-label">Password</label>
+                          <input type="password" class="form-control" id="exampleInputPassword1">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Create</button>
+                      </form>
+
+                </div>
+
+                <div class="col">
+                    <h4> Login</h4>
+ 
+                    <p>Login below</p>
+                    <form action="/login/login" method="POST">
+                        <input type="hidden" name="_csrf" value=<%= csrfToken %>>
+                        <div class="mb-3">
+                          <label>Email address</label>
+                          <input type="email" name="email">
+                        </div>
+                        <div class="mb-3">
+                          <label>Password</label>
+                          <input type="password" name="password">
+                        </div>
+                        <!-- <div class="mb-3 form-check">
+                          <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                          <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                        </div> -->
+                        <button type="submit" class="btn btn-primary">Login</button>
+                      </form>
+
+                </div>
+
+            </div>
+
+        </div> 
+        
+        <div class="col-lg-2"> </div>
+    </div>
+</div>
+
+<%- include('includes/footer') %> 
