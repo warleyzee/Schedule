@@ -55,4 +55,12 @@ Contact.prototype.cleanUp = function() {
     phone: this.body.phone,
   };
 }
+
+Contact.prototype.edit = async function (id){
+  if(typeof id !== 'string') return;
+  this.validation();
+  if(this.errors.length > 0) return;
+  this.contact = await contactModel.findByIdAndUpdate(id, this.body, {new: true});
+}
+
 module.exports = Contact;
