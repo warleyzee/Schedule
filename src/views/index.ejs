@@ -8,42 +8,30 @@
         <div class="col-lg-8 my-3">
             <h1 class=" text-center">Schedule</h1>
             <p class="text-center lead">You contacts below</p>
-
         </div>
 
+        <%- include('includes/messages')  %>
+        <% if(contacts.length > 0) {  %>
         <div class="responsive-table">
             <table class="table my-3 ">
                 
-                <tr>
-                    <td>Steve </td>
-                    <td>Jobs</td>
-                    <td>123456789</td>
-                    <td>steve.jobs@email.com</td>
-                </tr>
-                
-                <tr>
-                    <td>Elo</td>
-                    <td>Musk</td>
-                    <td>123456789</td>
-                    <td>Elo.musk@email.com</td>
-                </tr>
-                
-                <tr>
-                    <td>Jeff</td>
-                    <td>Bezos</td>
-                    <td>123456789</td>
-                    <td>jeff.bezos@email.com</td>
-                </tr>
-                
-                <tr>
-                    <td>Bil </td>
-                    <td>Gates</td>
-                    <td>123456789</td>
-                    <td>bil.gates@email.com</td>
-                </tr>
+                <% contacts.forEach(contact => { %>
+                    <tr>
+                        <td> <%= contact.name %>    </td>
+                        <td> <%= contact.suname %>  </td>
+                        <td> <%= contact.email %>   </td>
+                        <td> <%= contact.phone %>   </td>
+                        <td> <a href="/contact/<%= contact._id %>"> Edit</a> </td>
+                        <td> <a class="text-danger" href="/contact/delete/<%= contact._id %>"> Delete</a></td>
+                    </tr>
+
+                <% }); %>
 
             </table>
         </div>
+        <% } else { %>
+            <p class="text-center lead"> Schedule empity</p>
+        <% } %>
         
         <div class="col-lg-2"> </div>
     </div>
